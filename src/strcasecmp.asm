@@ -9,25 +9,24 @@
 
 section .text
 
-extern strcmp
-extern strtoupper
+extern my_strcmp
+extern my_strtoupper
 
-global strcasecmp:function
+global my_strcasecmp:function
 
 ;; int strcasecmp(const char *s1, const char *s2)
 ;; Inputs   :  rdi = address of s1, rsi = address of s2
 ;; Outputs  :  rax = difference of last compared bytes
 ;; Clobbers :  rdi, rsi
-strcasecmp:
-    call strtoupper WRT ..plt
-    mov rdi, rax
+my_strcasecmp:
+    call my_strtoupper WRT ..plt
+    push rax
 
-    push rdi
     mov rdi, rsi
-    call strtoupper WRT ..plt
-    pop rdi
+    call my_strtoupper WRT ..plt
     mov rsi, rax
+    pop rax
 
-    call strcmp WRT ..plt
+    call my_strcmp WRT ..plt
 
     ret

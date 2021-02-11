@@ -9,13 +9,13 @@
 
 section .text
 
-global strncmp:function
+global my_strncmp:function
 
 ;; int strncmp(const char *s1, const char *s2, size_t n);
 ;; Inputs   :  rdi = address of s1, rsi = address of s2, rdx = nbr of characters to compare
 ;; Outputs  :  rax = difference of last compared bytes
 ;; Clobbers :  rcx
-strncmp:
+my_strncmp:
     cld
     mov rcx, rdx
     repe cmpsb

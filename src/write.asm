@@ -13,13 +13,13 @@ SYS_WRITE: equ 1
 
 segment .text
 
-global write:function
+global my_write:function
 
 ;; void write(int fd, const void *buf, size_t count);
 ;; Inputs   :  RDI = file descriptor, RSI = offset string, RDX = number of characters to write
 ;; Outputs  :  <none>
 ;; Clobbers :  <none>
-write:
+my_write:
     mov rax, SYS_WRITE
     syscall
     ret

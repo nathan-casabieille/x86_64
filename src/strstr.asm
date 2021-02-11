@@ -9,19 +9,19 @@
 
 section .text
 
-extern strlen
-extern strncmp
+extern my_strlen
+extern my_strncmp
 
-global strstr:function
+global my_strstr:function
 
-;; char *strstr(char *haystack, const char *needle);
+;; char *strstr(const char *haystack, const char *needle);
 ;; Inputs   :  rdi = offset haystack, rsi = offset needle
 ;; Outputs  :  rax = pointer to the	first occurrence of the substring needle in the string haystack.
 ;; Clobbers :  rdi, rdx
-strstr:
+my_strstr:
     push rdi
     mov rdi, rsi
-    call strlen WRT ..plt
+    call my_strlen WRT ..plt
     mov rdx, rax
     pop rdi
 
@@ -40,7 +40,7 @@ strstr:
 
         push rdi
         push rsi
-        call strncmp WRT ..plt
+        call my_strncmp WRT ..plt
         pop rsi
         pop rdi
 
@@ -58,3 +58,4 @@ strstr:
      .done:
         mov rax, rdi
         ret
+                  

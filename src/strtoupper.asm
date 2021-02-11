@@ -9,13 +9,13 @@
 
 section .text
 
-global strtoupper:function
+global my_strtoupper:function
 
 ;; int toupper(int c);
 ;; Inputs   :  al = character to convert
 ;; Outputs  :  ah = uppercase character
 ;; Clobbers :  <none>
-toupper:
+my_toupper:
     mov ah, al
 
     cmp ah, 'a'
@@ -33,7 +33,7 @@ toupper:
 ;; Inputs   :  rdi = offset string
 ;; Outputs  :  rax = converted string
 ;; Clobbers :  rbx
-strtoupper:
+my_strtoupper:
     xor rbx, rbx
 
     .repeat:
@@ -42,7 +42,7 @@ strtoupper:
         cmp al, 0
         je .done
 
-        call toupper
+        call my_toupper
         mov byte [rdi + rbx], ah
 
         inc rbx

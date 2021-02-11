@@ -9,13 +9,13 @@
 
 section .text
 
-global strtolower:function
+global my_strtolower:function
 
 ;; int tolower(int c);
 ;; Inputs   :  al = character to convert
 ;; Outputs  :  ah = uppercase character
 ;; Clobbers :  <none>
-tolower:
+my_tolower:
     mov ah, al
 
     cmp ah, 'A'
@@ -33,7 +33,7 @@ tolower:
 ;; Inputs   :  rdi = offset string
 ;; Outputs  :  rax = converted string
 ;; Clobbers :  rbx
-strtolower:
+my_strtolower:
     xor rbx, rbx
 
     .repeat:
@@ -42,7 +42,7 @@ strtolower:
         cmp al, 0
         je .done
 
-        call tolower
+        call my_tolower
         mov byte [rdi + rbx], ah
 
         inc rbx

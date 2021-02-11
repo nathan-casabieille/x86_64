@@ -9,21 +9,21 @@
 
 section .text
 
-extern strlen
-extern strncmp
+extern my_strlen
+extern my_strncmp
 
-global strcmp:function
+global my_strcmp:function
 
 ;; int strcmp(const char *s1, const char *s2)
 ;; Inputs   :  rdi = address of s1, rsi = address of s2
 ;; Outputs  :  rax = difference of last compared bytes
 ;; Clobbers :  rdx, rcx
-strcmp:
+my_strcmp:
     push rsi
-    call strlen WRT ..plt
+    call my_strlen WRT ..plt
     mov rdx, rax
     pop rsi
 
-    call strncmp WRT ..plt
+    call my_strncmp WRT ..plt
 
     ret
