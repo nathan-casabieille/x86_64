@@ -9,17 +9,17 @@
 
 section .text
 
-extern strlen
+extern my_strlen
 
-global strchr:function
+global my_strchr:function
 
 ;; char *strchr(const char *s, int c);
 ;; Inputs   :  rdi = offset string, rsi = character to find
 ;; Outputs  :  rax = pointer to the first occurence of the character in the string buffer
 ;; Clobbers :  rdi, rsi, rcx
-strchr:
+my_strchr:
     push rsi
-    call strlen WRT ..plt
+    call my_strlen WRT ..plt
     mov rcx, rax
     inc rcx
     pop rsi
@@ -27,7 +27,13 @@ strchr:
     cld
     mov rax, rsi
     repne scasb
+    jnz .null
+
     dec rdi
     mov rax, rdi
 
     ret
+
+    .null:
+        mov rax, 0
+        ret

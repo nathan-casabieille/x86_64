@@ -16,15 +16,19 @@ ASFLAGS	=	-f elf64
 NAME	=	libasm.so
 
 SRCS_DIR	=	src/
-SRCS_FILES	=	putstr.asm			\
+SRCS_FILES	=	memcpy.asm			\
+							memset.asm			\
+							memmove.asm			\
+							putstr.asm			\
+							rindex.asm			\
 							strcasecmp.asm	\
 							strchr.asm			\
 							strcmp.asm			\
+							strcspn.asm			\
 							strlen.asm			\
 							strncmp.asm			\
+							strpbrk.asm			\
 							strstr.asm			\
-							strtolower.asm	\
-							strtoupper.asm	\
 							write.asm
 
 SRCS	=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
@@ -38,6 +42,7 @@ $(NAME):	$(OBJS)
 
 %.o : %.asm
 		$(AS) $(ASFLAGS) -o $@ $<
+
 
 clean:
 		$(RM) $(OBJS)

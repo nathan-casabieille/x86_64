@@ -9,13 +9,13 @@
 
 section .text
 
-global strlen:function
+global my_strlen:function
 
 ;; size_t strlen(char const *s)
 ;; Inputs   :  RDI = offset string
 ;; Outputs  :  EAX = length of the string, without the NULL terminator
 ;; Clobbers :  rsi
-strlen:
+my_strlen:
     push rbx
     mov rbx, rdi
     mov rsi, rbx

@@ -9,24 +9,24 @@
 
 section .text
 
-extern strlen
-extern write
+extern my_strlen
+extern my_write
 
-global putstr:function
+global my_putstr:function
 
 ;; int putstr(char const *str)
 ;; Inputs   :  rdi = offset string
 ;; Outputs  :  RAX = length of the string, without the NULL terminator
 ;; Clobbers :  rsi, rdx
-putstr:
-    call strlen WRT ..plt
+my_putstr:
+    call my_strlen WRT ..plt
     mov rdx, rax
     push rax
 
     mov rsi, rdi
     mov rdi, 1
 
-    call write WRT ..plt
+    call my_write WRT ..plt
     pop rax
 
     ret
