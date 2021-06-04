@@ -1,6 +1,8 @@
 NASM System V ABI x86-64 (Intel Syntax)
 
-Here are some basic functions of the libc that I rewrote in x86_64 (Some of them are under development).
+Here are some basic functions of the libc that I rewrote in x86_64.
+
+I learned this language on my own, so it is possible that some functions could be better written and optimized. I need advice :)
 
 <ul>
   <li><a href="https://github.com/nathan-casabieille/x86_64/blob/master/src/memcpy.asm">memcpy</a></li>
