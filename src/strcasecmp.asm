@@ -33,29 +33,29 @@ my_toupper:
 ;; Clobbers :  rdi, rsi
 my_strcasecmp:
     .loop:
-	      mov al, byte [rdi]
+	mov al, byte [rdi]
         call my_toupper
         mov ah, al
 
-	      mov al, byte [rsi]
+	mov al, byte [rsi]
         call my_toupper
 
         cmp ah, 0
-	      je .done
+	je .done
 
-	      cmp al, 0
-	      je .done
+	cmp al, 0
+	je .done
 
         cmp ah, al
-	      jne .done
+	jne .done
 
-	      inc rdi
-	      inc rsi
+        inc rdi
+	inc rsi
 
         jmp .loop
 
     .done:
         movzx rax, byte [rdi]
-	      movzx rbx, byte [rsi]
-	      sub rax, rbx
-	      ret
+	movzx rbx, byte [rsi]
+	sub rax, rbx
+	ret
