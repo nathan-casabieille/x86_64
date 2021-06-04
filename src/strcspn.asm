@@ -20,12 +20,12 @@ global my_strcspn:function
 ;; Clobbers :  rcx
 my_strcspn:
     xor rbx, rbx
-	  jmp .loop
+    jmp .loop
 
     inc rbx
 
     .loop:
-	      mov al, byte [rdi + rbx]
+        mov al, byte [rdi + rbx]
 
         cmp al, 0
         je .null
@@ -35,16 +35,16 @@ my_strcspn:
       	jmp .search
 
     .increment:
-	      inc rbx
+	inc rbx
         jmp .loop
 
     .search:
         mov dl, byte [rsi + rcx]
 
-	      cmp dl, 0
+	cmp dl, 0
       	je .increment
 
-	      cmp al, dl
+	cmp al, dl
         je .ret
 
         inc rcx
@@ -56,5 +56,5 @@ my_strcspn:
       	ret
 
     .ret:
-	      mov rax, rbx
+	mov rax, rbx
         ret
